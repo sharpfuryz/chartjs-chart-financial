@@ -1,5 +1,6 @@
 ﻿'use strict';
 
+const { DateTime } = require("luxon");
 import {BarController, defaults} from 'chart.js';
 import {clipArea, isNullOrUndef, unclipArea} from 'chart.js/helpers';
 
@@ -180,10 +181,6 @@ FinancialController.overrides = {
 				sampleSize: 100
 			},
 			afterBuildTicks: scale => {
-				const DateTime = window && window.luxon && window.luxon.DateTime;
-				if (!DateTime) {
-					return;
-				}
 				const majorUnit = scale._majorUnit;
 				const ticks = scale.ticks;
 				const firstTick = ticks[0];
